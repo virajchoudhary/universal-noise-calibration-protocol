@@ -1,0 +1,164 @@
+{
+  "run_name": "erm_colored_mnist",
+  "epochs": 8,
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": 0.4527378607532474,
+      "train_acc": 0.8888620843230404,
+      "val_loss": 0.2800765818754832,
+      "val_acc": 0.9191666666666667,
+      "val_worst_group_acc": 0.13857677578926086,
+      "lr": 0.0009619397662556434
+    },
+    {
+      "epoch": 1,
+      "train_loss": 0.36233548073190974,
+      "train_acc": 0.8959694180522565,
+      "val_loss": 0.20859258302052816,
+      "val_acc": 0.92,
+      "val_worst_group_acc": 0.10112359374761581,
+      "lr": 0.0008535533905932738
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.3325735884508441,
+      "train_acc": 0.8978807897862233,
+      "val_loss": 0.18913255413373312,
+      "val_acc": 0.9171666666666667,
+      "val_worst_group_acc": 0.06928838789463043,
+      "lr": 0.0006913417161825451
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.31221506654366743,
+      "train_acc": 0.9016293052256532,
+      "val_loss": 0.17918124655882517,
+      "val_acc": 0.9206666666666666,
+      "val_worst_group_acc": 0.1086142286658287,
+      "lr": 0.0005000000000000001
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.29357724068708485,
+      "train_acc": 0.9033922209026128,
+      "val_loss": 0.17435383188724518,
+      "val_acc": 0.9183333333333333,
+      "val_worst_group_acc": 0.08239700645208359,
+      "lr": 0.0003086582838174552
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.2707012092911433,
+      "train_acc": 0.9095717042755345,
+      "val_loss": 0.1783119355837504,
+      "val_acc": 0.9183333333333333,
+      "val_worst_group_acc": 0.08239700645208359,
+      "lr": 0.0001464466094067263
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.23674749687420218,
+      "train_acc": 0.9193883610451307,
+      "val_loss": 0.1906465060710907,
+      "val_acc": 0.9201666666666667,
+      "val_worst_group_acc": 0.10299625247716904,
+      "lr": 3.8060233744356646e-05
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.19846726237240994,
+      "train_acc": 0.9332133313539193,
+      "val_loss": 0.19376902222633363,
+      "val_acc": 0.922,
+      "val_worst_group_acc": 0.12359550595283508,
+      "lr": 0.0
+    }
+  ],
+  "best_val_worst_group_acc": 0.13857677578926086,
+  "test": {
+    "loss": 0.18518552812337874,
+    "acc": 0.922,
+    "per_group_acc": {
+      "0": 1.0,
+      "1": 0.10138248652219772
+    },
+    "worst_group_acc": 0.10138248652219772,
+    "worst_group": 1
+  },
+  "shifted_test": {
+    "loss": 1.8497384677886963,
+    "acc": 0.2037,
+    "per_group_acc": {
+      "0": 1.0,
+      "1": 0.11620421707630157
+    },
+    "worst_group_acc": 0.11620421707630157,
+    "worst_group": 1
+  },
+  "elapsed_sec": 925.4473149776459,
+  "config": {
+    "dataset": {
+      "name": "colored_mnist",
+      "root": "./data",
+      "correlation_strength": 0.9,
+      "label_noise": 0.25,
+      "download": true
+    },
+    "model": {
+      "name": "resnet18_small",
+      "hidden_dim": 512,
+      "num_classes": 10
+    },
+    "nsa": {
+      "noise_types": [
+        "gaussian",
+        "spatial_masking",
+        "frequency_filter",
+        "gaussian_blur",
+        "color_jitter",
+        "patch_shuffle"
+      ],
+      "sigma_range": [
+        0.05,
+        1.0
+      ],
+      "num_levels": 11,
+      "num_samples": 500
+    },
+    "cni": {
+      "calibration_method": "threshold",
+      "target_flip_rate": 0.5,
+      "noise_type": "auto",
+      "schedule": "three_phase"
+    },
+    "training": {
+      "batch_size": 128,
+      "lr": 0.001,
+      "epochs": 8,
+      "phase_a_epochs": 3,
+      "phase_b_epochs": 12,
+      "phase_c_epochs": 5,
+      "warmup_ratio": 0.15,
+      "weight_decay": 0.0001,
+      "annealing": "cosine",
+      "mixed_precision": false,
+      "num_workers": 0
+    },
+    "evaluation": {
+      "metrics_list": [
+        "avg_acc",
+        "worst_group_acc",
+        "per_group_acc",
+        "srd"
+      ]
+    },
+    "wandb": {
+      "project_name": "uncp",
+      "entity": null,
+      "enabled": false
+    },
+    "seed": 42,
+    "device": "auto"
+  }
+}

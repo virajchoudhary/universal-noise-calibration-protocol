@@ -1,0 +1,46 @@
+dataset:
+  name: waterbirds
+  root: ./data/waterbirds
+  download: false
+  image_size: 224
+
+model:
+  name: resnet18_imagenet
+  pretrained: true
+  num_classes: 2
+
+nsa:
+  noise_types: [gaussian, spatial_masking, frequency_filter, gaussian_blur, color_jitter, patch_shuffle]
+  sigma_range: [0.05, 1.0]
+  num_levels: 11
+  num_samples: 500
+
+cni:
+  calibration_method: threshold
+  target_flip_rate: 0.5
+  noise_type: auto
+  schedule: three_phase
+
+training:
+  batch_size: 64
+  lr: 0.0001
+  epochs: 30
+  phase_a_epochs: 5
+  phase_b_epochs: 18
+  phase_c_epochs: 7
+  warmup_ratio: 0.17
+  weight_decay: 0.0001
+  annealing: cosine
+  mixed_precision: true
+  num_workers: 4
+
+evaluation:
+  metrics_list: [avg_acc, worst_group_acc, per_group_acc, srd]
+
+wandb:
+  project_name: uncp
+  entity: null
+  enabled: false
+
+seed: 42
+device: auto

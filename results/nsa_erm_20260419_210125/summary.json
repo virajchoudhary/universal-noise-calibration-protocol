@@ -1,0 +1,39 @@
+{
+  "ranking": [
+    [
+      "spatial_masking",
+      0.9039999842643738
+    ],
+    [
+      "gaussian",
+      0.8080000281333923
+    ],
+    [
+      "frequency_filter",
+      0.8059999942779541
+    ],
+    [
+      "gaussian_blur",
+      0.7620000243186951
+    ],
+    [
+      "color_jitter",
+      0.6660000085830688
+    ],
+    [
+      "patch_shuffle",
+      0.3700000047683716
+    ]
+  ],
+  "group_disparity": {
+    "gaussian": 43.076921921510014,
+    "spatial_masking": 2232.1429569274187,
+    "frequency_filter": 17.230769102390003,
+    "gaussian_blur": 17.230769145183075,
+    "color_jitter": 34.461538204780005,
+    "patch_shuffle": 2.0461537588559686
+  },
+  "recommended_noise": "spatial_masking",
+  "sigma_low": 0.6,
+  "sigma_high": 0.7
+}

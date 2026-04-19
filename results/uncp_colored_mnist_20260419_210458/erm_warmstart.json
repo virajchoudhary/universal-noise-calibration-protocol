@@ -1,0 +1,55 @@
+{
+  "run_name": "uncp_colored_mnist_warmstart",
+  "epochs": 3,
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": 0.4527378607532474,
+      "train_acc": 0.8888620843230404,
+      "val_loss": 0.2800765818754832,
+      "val_acc": 0.9191666666666667,
+      "val_worst_group_acc": 0.13857677578926086,
+      "lr": 0.00075
+    },
+    {
+      "epoch": 1,
+      "train_loss": 0.3547117395454801,
+      "train_acc": 0.8969529394299287,
+      "val_loss": 0.2070632843176524,
+      "val_acc": 0.9195,
+      "val_worst_group_acc": 0.09550561755895615,
+      "lr": 0.0002500000000000001
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.30654969726492276,
+      "train_acc": 0.9031324228028503,
+      "val_loss": 0.17856966078281403,
+      "val_acc": 0.9153333333333333,
+      "val_worst_group_acc": 0.048689138144254684,
+      "lr": 0.0
+    }
+  ],
+  "best_val_worst_group_acc": 0.13857677578926086,
+  "test": {
+    "loss": 0.17321219613552094,
+    "acc": 0.9202,
+    "per_group_acc": {
+      "0": 1.0,
+      "1": 0.08064515888690948
+    },
+    "worst_group_acc": 0.08064515888690948,
+    "worst_group": 1
+  },
+  "shifted_test": {
+    "loss": 1.6839597993850708,
+    "acc": 0.1685,
+    "per_group_acc": {
+      "0": 1.0,
+      "1": 0.07713651657104492
+    },
+    "worst_group_acc": 0.07713651657104492,
+    "worst_group": 1
+  },
+  "elapsed_sec": 335.6917109489441
+}

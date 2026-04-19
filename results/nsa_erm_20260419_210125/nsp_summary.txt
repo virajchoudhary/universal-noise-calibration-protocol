@@ -1,0 +1,20 @@
+NSP diagnostic report — ERM_ColoredMNIST
+============================================================
+Vulnerability ranking (max flip rate across σ):
+   1. spatial_masking      0.904
+   2. gaussian             0.808
+   3. frequency_filter     0.806
+   4. gaussian_blur        0.762
+   5. color_jitter         0.666
+   6. patch_shuffle        0.370
+
+Per-noise group disparity (max over σ):
+  spatial_masking      2232.14
+  gaussian             43.08
+  color_jitter         34.46
+  gaussian_blur        17.23
+  frequency_filter     17.23
+  patch_shuffle        2.05
+
+Recommended noise for CNI: spatial_masking
+  magnitude at which minority flip rate >= 0.5: 0.6

@@ -1,0 +1,201 @@
+{
+  "run_name": "uncp_colored_mnist",
+  "elapsed_sec": 1543.8529999256134,
+  "erm_test_id": {
+    "loss": 0.17321219613552094,
+    "acc": 0.9202,
+    "per_group_acc": {
+      "0": 1.0,
+      "1": 0.08064515888690948
+    },
+    "worst_group_acc": 0.08064515888690948,
+    "worst_group": 1
+  },
+  "erm_test_ood": {
+    "loss": 1.6839597993850708,
+    "acc": 0.1685,
+    "per_group_acc": {
+      "0": 1.0,
+      "1": 0.07713651657104492
+    },
+    "worst_group_acc": 0.07713651657104492,
+    "worst_group": 1
+  },
+  "calibration": {
+    "recommended_noise_type": "gaussian",
+    "sigma_spurious": 0.3,
+    "sigma_low": 0.15,
+    "sigma_high": 0.44999999999999996,
+    "confidence": 0.6,
+    "metadata": {
+      "worst_group": 1,
+      "best_group": 0,
+      "noise_disparity": 96153.8478732109,
+      "all_disparities": {
+        "gaussian": 96153.8478732109,
+        "spatial_masking": 76923.07978868484,
+        "frequency_filter": 19230.76994717121,
+        "gaussian_blur": 38461.53989434242,
+        "color_jitter": 19230.76994717121,
+        "patch_shuffle": 6.892307784740739
+      },
+      "target_flip_rate": 0.5,
+      "best_group_cap": 0.3
+    }
+  },
+  "schedule": {
+    "total_epochs": 10,
+    "phase_a_epochs": 1,
+    "phase_b_epochs": 6,
+    "phase_c_epochs": 3,
+    "sigma_low": 0.15,
+    "sigma_high": 0.44999999999999996,
+    "sigma_finetune": 0.045,
+    "annealing_strategy": "cosine"
+  },
+  "history": [
+    {
+      "epoch": 0,
+      "phase": "warm_up",
+      "sigma": 0.0,
+      "train_loss": 0.35580426426228323,
+      "train_acc": 0.8950601247030879,
+      "val_acc": 0.919,
+      "val_wga": 0.08988764137029648
+    },
+    {
+      "epoch": 1,
+      "phase": "noise_injection",
+      "sigma": 0.15,
+      "train_loss": 0.3271257481991254,
+      "train_acc": 0.8979179038004751,
+      "val_acc": 0.9176666666666666,
+      "val_wga": 0.0749063640832901
+    },
+    {
+      "epoch": 2,
+      "phase": "noise_injection",
+      "sigma": 0.17864745084375788,
+      "train_loss": 0.3127962535959525,
+      "train_acc": 0.9001076306413301,
+      "val_acc": 0.9205,
+      "val_wga": 0.10674156993627548
+    },
+    {
+      "epoch": 3,
+      "phase": "noise_injection",
+      "sigma": 0.25364745084375784,
+      "train_loss": 0.3034590357414617,
+      "train_acc": 0.9019818883610451,
+      "val_acc": 0.9211666666666667,
+      "val_wga": 0.11797752976417542
+    },
+    {
+      "epoch": 4,
+      "phase": "noise_injection",
+      "sigma": 0.34635254915624203,
+      "train_loss": 0.2989947642962893,
+      "train_acc": 0.9017963182897862,
+      "val_acc": 0.9213333333333333,
+      "val_wga": 0.12921348214149475
+    },
+    {
+      "epoch": 5,
+      "phase": "noise_injection",
+      "sigma": 0.4213525491562421,
+      "train_loss": 0.29607678709149077,
+      "train_acc": 0.903874703087886,
+      "val_acc": 0.9241666666666667,
+      "val_wga": 0.17977528274059296
+    },
+    {
+      "epoch": 6,
+      "phase": "noise_injection",
+      "sigma": 0.44999999999999996,
+      "train_loss": 0.2856582110115015,
+      "train_acc": 0.9052108076009501,
+      "val_acc": 0.9238333333333333,
+      "val_wga": 0.18164794147014618
+    },
+    {
+      "epoch": 7,
+      "phase": "fine_tuning",
+      "sigma": 0.045,
+      "train_loss": 0.23868104406674515,
+      "train_acc": 0.9179594714964371,
+      "val_acc": 0.9211666666666667,
+      "val_wga": 0.11423221230506897
+    },
+    {
+      "epoch": 8,
+      "phase": "fine_tuning",
+      "sigma": 0.030000000000000002,
+      "train_loss": 0.20963265507032922,
+      "train_acc": 0.9264400237529691,
+      "val_acc": 0.9233333333333333,
+      "val_wga": 0.13857677578926086
+    },
+    {
+      "epoch": 9,
+      "phase": "fine_tuning",
+      "sigma": 0.015000000000000001,
+      "train_loss": 0.1865999907998461,
+      "train_acc": 0.9350133610451307,
+      "val_acc": 0.9226666666666666,
+      "val_wga": 0.13108614087104797
+    }
+  ],
+  "validation": {
+    "test_id": {
+      "acc": 0.9243,
+      "per_group_acc": {
+        "0": 0.9966053366661072,
+        "1": 0.16359446942806244
+      },
+      "worst_group_acc": 0.16359446942806244
+    },
+    "test_ood": {
+      "acc": 0.2558,
+      "per_group_acc": {
+        "0": 0.9969696998596191,
+        "1": 0.17436182498931885
+      },
+      "worst_group_acc": 0.17436182498931885
+    },
+    "nsp_after_ranking": [
+      [
+        "gaussian",
+        0.906000018119812
+      ],
+      [
+        "spatial_masking",
+        0.9020000100135803
+      ],
+      [
+        "frequency_filter",
+        0.9020000100135803
+      ],
+      [
+        "gaussian_blur",
+        0.871999979019165
+      ],
+      [
+        "color_jitter",
+        0.6679999828338623
+      ],
+      [
+        "patch_shuffle",
+        0.34200000762939453
+      ]
+    ],
+    "delta_nsp": {
+      "gaussian": -0.02599996328353882,
+      "spatial_masking": -0.0040000081062316895,
+      "frequency_filter": 0.11599999666213989,
+      "gaussian_blur": 0.1499999761581421,
+      "color_jitter": 0.029999971389770508,
+      "patch_shuffle": 0.20800000429153442
+    },
+    "nsp_after_path": "/Users/dhruvaambhaikar/UNCP/results/uncp_colored_mnist_20260419_210458/nsp_after.pkl"
+  }
+}

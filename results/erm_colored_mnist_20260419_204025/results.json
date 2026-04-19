@@ -1,0 +1,163 @@
+{
+  "run_name": "erm_colored_mnist",
+  "epochs": 8,
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": 0.1018287582782533,
+      "train_acc": 0.9702345605700713,
+      "val_loss": 0.045817461222410205,
+      "val_acc": 0.9868333333333333,
+      "val_worst_group_acc": 0.9101123809814453,
+      "lr": 0.0009619397662556434
+    },
+    {
+      "epoch": 1,
+      "train_loss": 0.028285887811029874,
+      "train_acc": 0.9913895486935868,
+      "val_loss": 0.047959843307733535,
+      "val_acc": 0.9863333333333333,
+      "val_worst_group_acc": 0.915730357170105,
+      "lr": 0.0008535533905932738
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.014744350448861328,
+      "train_acc": 0.9956762173396675,
+      "val_loss": 0.019591485125323136,
+      "val_acc": 0.9935,
+      "val_worst_group_acc": 0.9719101190567017,
+      "lr": 0.0006913417161825451
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.008640456854973007,
+      "train_acc": 0.9974205760095012,
+      "val_loss": 0.012229662770715853,
+      "val_acc": 0.9963333333333333,
+      "val_worst_group_acc": 0.9812734127044678,
+      "lr": 0.0005000000000000001
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.004891736097023419,
+      "train_acc": 0.9985525534441805,
+      "val_loss": 0.018278765836264938,
+      "val_acc": 0.996,
+      "val_worst_group_acc": 0.9794007539749146,
+      "lr": 0.0003086582838174552
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.0023320545466295503,
+      "train_acc": 0.9992762767220903,
+      "val_loss": 0.01144956030556932,
+      "val_acc": 0.9973333333333333,
+      "val_worst_group_acc": 0.9887640476226807,
+      "lr": 0.0001464466094067263
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.0007063897258283634,
+      "train_acc": 0.9998701009501187,
+      "val_loss": 0.011754109102049066,
+      "val_acc": 0.9971666666666666,
+      "val_worst_group_acc": 0.9850187301635742,
+      "lr": 3.8060233744356646e-05
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.0003383964846314769,
+      "train_acc": 0.9999814429928741,
+      "val_loss": 0.0108039707801654,
+      "val_acc": 0.9978333333333333,
+      "val_worst_group_acc": 0.9887640476226807,
+      "lr": 0.0
+    }
+  ],
+  "best_val_worst_group_acc": 0.9887640476226807,
+  "test": {
+    "loss": 0.0035595574383394707,
+    "acc": 0.9989,
+    "per_group_acc": {
+      "0": 0.9994524717330933,
+      "1": 0.9930875301361084
+    },
+    "worst_group_acc": 0.9930875301361084,
+    "worst_group": 1
+  },
+  "shifted_test": {
+    "loss": 0.04214137445068918,
+    "acc": 0.9864,
+    "per_group_acc": {
+      "0": 0.9989898800849915,
+      "1": 0.9850166440010071
+    },
+    "worst_group_acc": 0.9850166440010071,
+    "worst_group": 1
+  },
+  "elapsed_sec": 919.5470130443573,
+  "config": {
+    "dataset": {
+      "name": "colored_mnist",
+      "root": "./data",
+      "correlation_strength": 0.9,
+      "download": true
+    },
+    "model": {
+      "name": "resnet18_small",
+      "hidden_dim": 512,
+      "num_classes": 10
+    },
+    "nsa": {
+      "noise_types": [
+        "gaussian",
+        "spatial_masking",
+        "frequency_filter",
+        "gaussian_blur",
+        "color_jitter",
+        "patch_shuffle"
+      ],
+      "sigma_range": [
+        0.05,
+        1.0
+      ],
+      "num_levels": 11,
+      "num_samples": 500
+    },
+    "cni": {
+      "calibration_method": "threshold",
+      "target_flip_rate": 0.5,
+      "noise_type": "auto",
+      "schedule": "three_phase"
+    },
+    "training": {
+      "batch_size": 128,
+      "lr": 0.001,
+      "epochs": 8,
+      "phase_a_epochs": 3,
+      "phase_b_epochs": 12,
+      "phase_c_epochs": 5,
+      "warmup_ratio": 0.15,
+      "weight_decay": 0.0001,
+      "annealing": "cosine",
+      "mixed_precision": false,
+      "num_workers": 0
+    },
+    "evaluation": {
+      "metrics_list": [
+        "avg_acc",
+        "worst_group_acc",
+        "per_group_acc",
+        "srd"
+      ]
+    },
+    "wandb": {
+      "project_name": "uncp",
+      "entity": null,
+      "enabled": false
+    },
+    "seed": 42,
+    "device": "auto"
+  }
+}
