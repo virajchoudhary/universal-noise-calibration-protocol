@@ -1,0 +1,14 @@
+\begin{table}[t]
+\centering
+\caption{Colored MNIST ($\rho=0.9$) comparison. Methods marked with * require group labels during training.}
+\label{tab:main_results}
+\begin{tabular}{lccccc}
+\toprule
+Method & Group Labels? & Avg Acc & WGA & SRD & Rel. Cost \\
+\midrule
+erm & No & 0.117 & \textbf{0.104} & 0.004 & 1x \\
+dropout\_0.3 & No & 0.131 & \underline{0.104} & 0.010 & 1x \\
+uncp & No & 0.102 & 0.098 & 0.007 & 2x \\
+\bottomrule
+\end{tabular}
+\end{table}
