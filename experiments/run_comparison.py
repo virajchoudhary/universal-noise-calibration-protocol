@@ -179,7 +179,7 @@ def run_uncp_pipeline(
 
     # -- Stage 1: Warm-start ERM --
     print("\n[UNCP Stage 0] Warm-start ERM training...")
-    warmstart_epochs = max(2, uncp_epochs // 5)
+    warmstart_epochs = max(3, uncp_epochs // 3)
     warmstart_config = copy.deepcopy(config)
     OmegaConf.update(warmstart_config, "training.epochs", warmstart_epochs)
 
@@ -218,6 +218,23 @@ def run_uncp_pipeline(
     )
     calib_config = calibrator.calibrate()
 
+    # Cap maximum sigma to prevent over-aggressive noise
+    MAX_SIGMA = 0.7
+    if calib_config.sigma_high > MAX_SIGMA:
+        print(f"  [CNI] Capping sigma_high from {calib_config.sigma_high:.4f} to {MAX_SIGMA}")
+        calib_config.sigma_high = MAX_SIGMA
+    if calib_config.sigma_spurious > MAX_SIGMA:
+        calib_config.sigma_spurious = MAX_SIGMA
+    # Recalculate sigma_low as 0.5 * sigma_spurious
+    calib_config.sigma_low = 0.5 * calib_config.sigma_spurious
+
+    # Override: prefer spatial_masking if available (highest group disparity)
+    if calib_config.recommended_noise_type == "frequency_filter":
+        if "spatial_masking" in noise_gens:
+            print(f"  [CNI] Overriding frequency_filter -> spatial_masking (higher group disparity)")
+            calib_config.recommended_noise_type = "spatial_masking"
+            # Keep the same sigma values
+
     print(f"  Recommended noise: {calib_config.recommended_noise_type}")
     print(f"  sigma_spurious: {calib_config.sigma_spurious:.4f}")
     print(f"  sigma range: [{calib_config.sigma_low:.4f}, {calib_config.sigma_high:.4f}]")
@@ -235,6 +252,7 @@ def run_uncp_pipeline(
         phase_c_epochs=phase_c,
         sigma_low=calib_config.sigma_low,
         sigma_high=calib_config.sigma_high,
+        sigma_finetune=calib_config.sigma_spurious * 0.3,
         annealing_strategy="cosine",
     )
 
