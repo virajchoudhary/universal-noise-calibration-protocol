@@ -717,7 +717,7 @@ def main():
 
     # -- Configuration --
     set_seed(args.seed)
-    device = torch.device("cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Quick mode settings
     if args.quick:
