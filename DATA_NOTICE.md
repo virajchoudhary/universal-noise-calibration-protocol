@@ -2,7 +2,7 @@
 
 The MNIST files in `data/MNIST/raw/` are an external benchmark, not original research data created by this project.
 
-[Keras's MNIST documentation](https://keras.io/api/datasets/mnist/) credits Yann LeCun and Corinna Cortes and identifies the dataset's [Creative Commons Attribution-ShareAlike 3.0 license](https://creativecommons.org/licenses/by-sa/3.0/). The [MNIST source page](https://yann.lecun.com/exdb/mnist/) describes the benchmark. Retain attribution and the applicable license when redistributing MNIST material.
+[Keras's MNIST documentation](https://keras.io/api/datasets/mnist/) credits Yann LeCun and Corinna Cortes and identifies the dataset's [Creative Commons Attribution-ShareAlike 3.0 license](https://creativecommons.org/licenses/by-sa/3.0/). Retain attribution and the applicable license when redistributing MNIST material.
 
 The repository's `uncp/data/colored_mnist.py` loader uses `torchvision.datasets.MNIST`. Generated color variants remain derived benchmark material; this notice does not remove upstream obligations.
 
